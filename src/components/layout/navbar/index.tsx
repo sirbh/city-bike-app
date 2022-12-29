@@ -1,4 +1,4 @@
-import { AdbOutlined, Menu as MenuIcon } from '@mui/icons-material';
+import { PedalBike, Menu as MenuIcon } from '@mui/icons-material';
 import Box from '@mui/material/Box';
 import { AppBar, Container, Toolbar, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
@@ -14,10 +14,10 @@ function Navbar() {
   ];
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ width: '100vw' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbOutlined sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <PedalBike sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Link to="./" style={{ textDecoration: 'none' }}>
             <Typography
               variant="h6"
@@ -33,7 +33,7 @@ function Navbar() {
                 textDecoration: 'none',
               }}
             >
-              LOGO
+              CityBike
             </Typography>
           </Link>
 
@@ -79,7 +79,6 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
-          {/* <MenuIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
@@ -96,9 +95,15 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            CityBike
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: 'none', md: 'flex' },
+              justifyContent: 'end',
+            }}
+          >
             {pages.map((page) => (
               <Link
                 to={page.route}
@@ -107,7 +112,12 @@ function Navbar() {
               >
                 <Button
                   // onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{
+                    my: 2,
+                    color: 'white',
+                    display: 'block',
+                    marginLeft: '20px',
+                  }}
                 >
                   {page.name}
                 </Button>
