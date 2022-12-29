@@ -30,11 +30,9 @@ function Journey() {
 
   const [seletedTab, setSelectedTab] = useState(1);
   const tabClickHandler = (newValue: number) => {
-    console.log(newValue === seletedTab);
     setSelectedTab(newValue);
     setTabsState((prev) => {
       if (newValue === seletedTab) {
-        console.log('entred');
         if (prev[newValue].order === 'asc') {
           const updatedState = [...prev];
           updatedState[newValue].order = 'desc';
@@ -49,7 +47,6 @@ function Journey() {
   };
 
   useEffect(() => {
-    console.log(tabsState);
     setOrder(tabsState[seletedTab].order);
     setSortBy(tabsState[seletedTab].value);
   }, [tabsState, seletedTab, setOrder, setSortBy]);
