@@ -13,25 +13,33 @@ export interface IJourney {
   duration: number;
 }
 
+interface IJourneyAPIResponse {
+  totalRecords: number;
+  journey: IJourney[];
+}
+
 function useJourneyDetails() {
   const [journeyDetails, setJourneyDetails] = useState<IJourney[]>([]);
   const [page, setPage] = useState<number>(1);
   const [totalRecords, setTotalRecords] = useState<number>(10);
   const [sortBy, setSortBy] = useState<string>();
   const [order, setOrder] = useState<string>();
+  const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
     axios
-      .get<IJourney[]>(
+      .get<IJourneyAPIResponse>(
         `http://localhost:8080/?page=${page}&totalRecords=${totalRecords}${
           sortBy ? `&sortBy=${sortBy}` : ''
         }${order ? `&order=${order}` : ''}`
       )
       .then((data) => {
-        setJourneyDetails(data.data);
+        setJourneyDetails(data.data.journey);
+        setCount(data.data.totalRecords);
       })
       .catch((e) => {
         setJourneyDetails([]);
+        setCount(0);
       });
   }, [page, totalRecords, sortBy, order]);
 
@@ -42,6 +50,7 @@ function useJourneyDetails() {
     setSortBy,
     setOrder,
     page,
+    count,
   };
 }
 

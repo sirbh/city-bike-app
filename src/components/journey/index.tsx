@@ -1,35 +1,14 @@
-import { useEffect, useState } from 'react';
 import Table from './table';
 import useJourneyDetails from '../../hooks/useJourneyDetails';
 import Tabs from './tabs';
+import useSortingTabsManager from '../../hooks/utility/useSortingTabsManager';
 
 function Journey() {
-  const { journeyDetails, setOrder, setSortBy, setPage, page } =
+  const { journeyDetails, setOrder, setSortBy, setPage, page, count } =
     useJourneyDetails();
-  const [tabsState, setTabsState] = useState([
-    {
-      name: 'Departure Station',
-      value: 'departure_station_name',
-      order: 'asc',
-    },
-    {
-      name: 'Return Station',
-      value: 'return_station_name',
-      order: 'asc',
-    },
-    {
-      name: 'Covered Distance',
-      value: 'covered_distance',
-      order: 'asc',
-    },
-    {
-      name: 'Duration',
-      value: 'duration',
-      order: 'asc',
-    },
-  ]);
+  const { seletedTab, setSelectedTab, setTabsState, tabsState } =
+    useSortingTabsManager(setOrder, setSortBy, setPage);
 
-  const [seletedTab, setSelectedTab] = useState(1);
   const tabClickHandler = (newValue: number) => {
     setSelectedTab(newValue);
     setTabsState((prev) => {
@@ -47,11 +26,6 @@ function Journey() {
     });
   };
 
-  useEffect(() => {
-    setOrder(tabsState[seletedTab].order);
-    setSortBy(tabsState[seletedTab].value);
-  }, [tabsState, seletedTab, setOrder, setSortBy]);
-
   return (
     <>
       <Tabs
@@ -61,6 +35,7 @@ function Journey() {
       />
       <Table
         tableData={journeyDetails}
+        count={count}
         page={page}
         pageChangeHandler={(n: number) => {
           setPage(n + 1);

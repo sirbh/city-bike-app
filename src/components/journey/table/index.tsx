@@ -13,12 +13,14 @@ interface ITableProps {
   tableData: IJourney[];
   pageChangeHandler: (n: number) => void;
   page: number;
+  count: number;
 }
 
 export default function DenseTable({
   tableData,
   pageChangeHandler,
   page,
+  count,
 }: ITableProps) {
   return (
     <>
@@ -51,7 +53,7 @@ export default function DenseTable({
         rowsPerPageOptions={[10]}
         component="div"
         align="center"
-        count={1000}
+        count={count}
         rowsPerPage={10}
         page={page - 1}
         onPageChange={(e, n) => {
