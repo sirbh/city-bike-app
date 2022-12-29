@@ -6,38 +6,59 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { TablePagination } from '@mui/material';
 import { IJourney } from '../../../hooks/useJourneyDetails';
 
 interface ITableProps {
   tableData: IJourney[];
+  pageChangeHandler: (n: number) => void;
+  page: number;
 }
 
-export default function DenseTable({ tableData }: ITableProps) {
+export default function DenseTable({
+  tableData,
+  pageChangeHandler,
+  page,
+}: ITableProps) {
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 350 }} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="left">Departure station</TableCell>
-            <TableCell align="left">Returhn Station</TableCell>
-            <TableCell align="right">Covered Distance&nbsp;(mins)</TableCell>
-            <TableCell align="right">Duration&nbsp;(km)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {tableData.map((row) => (
-            <TableRow
-              key={row.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell align="left">{row.departure_station_name}</TableCell>
-              <TableCell align="left">{row.return_station_name}</TableCell>
-              <TableCell align="right">{row.covered_distance}</TableCell>
-              <TableCell align="right">{row.duration}</TableCell>
+    <>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 350 }} size="small" aria-label="a dense table">
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">Departure station</TableCell>
+              <TableCell align="left">Returhn Station</TableCell>
+              <TableCell align="right">Covered Distance&nbsp;(mins)</TableCell>
+              <TableCell align="right">Duration&nbsp;(km)</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {tableData.map((row) => (
+              <TableRow
+                key={row.id}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell align="left">{row.departure_station_name}</TableCell>
+                <TableCell align="left">{row.return_station_name}</TableCell>
+                <TableCell align="right">{row.covered_distance}</TableCell>
+                <TableCell align="right">{row.duration}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[10]}
+        component="div"
+        align="center"
+        count={1000}
+        rowsPerPage={10}
+        page={page - 1}
+        onPageChange={(e, n) => {
+          pageChangeHandler(n);
+        }}
+        // onRowsPerPageChange={handleChangeRowsPerPage}
+      />
+    </>
   );
 }

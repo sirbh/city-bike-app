@@ -35,7 +35,14 @@ function useJourneyDetails() {
       });
   }, [page, totalRecords, sortBy, order]);
 
-  return { journeyDetails, setPage, setTotalRecords, setSortBy, setOrder };
+  return {
+    journeyDetails,
+    setPage,
+    setTotalRecords,
+    setSortBy,
+    setOrder,
+    page,
+  };
 }
 
 export default useJourneyDetails;

@@ -19,7 +19,6 @@ function getLabel(order: string) {
   if (order === 'asc') {
     return <ArrowDownward />;
   }
-
   return <ArrowUpward />;
 }
 

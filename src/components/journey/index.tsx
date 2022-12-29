@@ -4,7 +4,8 @@ import useJourneyDetails from '../../hooks/useJourneyDetails';
 import Tabs from './tabs';
 
 function Journey() {
-  const { journeyDetails, setOrder, setSortBy, setPage } = useJourneyDetails();
+  const { journeyDetails, setOrder, setSortBy, setPage, page } =
+    useJourneyDetails();
   const [tabsState, setTabsState] = useState([
     {
       name: 'Departure Station',
@@ -58,7 +59,13 @@ function Journey() {
         onTabClick={tabClickHandler}
         seletedTab={seletedTab}
       />
-      <Table tableData={journeyDetails} />
+      <Table
+        tableData={journeyDetails}
+        page={page}
+        pageChangeHandler={(n: number) => {
+          setPage(n + 1);
+        }}
+      />
     </>
   );
 }
