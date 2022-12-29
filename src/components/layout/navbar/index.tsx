@@ -11,7 +11,7 @@ function Navbar() {
   ];
 
   return (
-    <AppBar position="static" sx={{ width: '100vw' }}>
+    <AppBar position="static" sx={{ width: '100%' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <PedalBike sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />

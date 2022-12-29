@@ -44,6 +44,7 @@ export default function DenseTable({
         </Table>
       </TableContainer>
       <TablePagination
+        sx={{ display: 'flex', justifyContent: 'center' }}
         rowsPerPageOptions={[10]}
         component="div"
         align="center"

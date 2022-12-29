@@ -50,6 +50,7 @@ export default function DenseTable({
         </Table>
       </TableContainer>
       <TablePagination
+        sx={{ display: 'flex', justifyContent: 'center' }}
         rowsPerPageOptions={[10]}
         component="div"
         align="center"
@@ -59,7 +60,6 @@ export default function DenseTable({
         onPageChange={(e, n) => {
           pageChangeHandler(n);
         }}
-        // onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </>
   );
