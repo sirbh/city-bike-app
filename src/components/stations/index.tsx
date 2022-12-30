@@ -9,20 +9,25 @@ import useStationDetails from '../../hooks/useStationDetails';
 function Stations() {
   const { count, page, setPage, stationList } = useStationList();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const { setSelectedOption } = useStationDetails();
+  const { setSelectedOption, stationDetails } = useStationDetails();
   return (
     <>
-      <ModalCard
-        handleClose={() => {
-          setIsModalOpen(false);
-        }}
-        open={isModalOpen}
-      />
+      {stationDetails && (
+        <ModalCard
+          handleClose={() => {
+            setIsModalOpen(false);
+          }}
+          open={isModalOpen}
+          stationDetails={stationDetails}
+        />
+      )}
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <AutocompleteInput
           setSelectedOption={(option) => {
             setSelectedOption(option);
-            setIsModalOpen(true);
+            if (option) {
+              setIsModalOpen(true);
+            }
           }}
         />
       </Box>
@@ -37,8 +42,8 @@ function Stations() {
         }}
         tableData={stationList}
         onRowClick={(option) => {
-          setIsModalOpen(true);
           setSelectedOption(option);
+          setIsModalOpen(true);
         }}
       />
     </>

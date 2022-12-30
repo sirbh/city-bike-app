@@ -2,17 +2,17 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { StationOptions } from './useStationSearch';
 
-interface IStationDetails {
+export interface IStationDetails {
   id: number;
   station_id: number;
   name: string;
   adress: string;
   x: number;
   y: number;
-  total_depatures: number;
+  total_departures: number;
   total_return: number;
   avg_departure_distance: number;
-  avg_return_distanc: number;
+  avg_return_distance: number;
 }
 
 function useStationDetails() {
@@ -26,10 +26,11 @@ function useStationDetails() {
           `http://localhost:8080/station?id=${selectedOpetion.id}&station_id=${selectedOpetion.station_id}`
         )
         .then((data) => {
+          console.log(data.data);
           setStationDetails(data.data);
         })
         .catch((e) => {
-          setStationDetails(undefined);
+          // setStationDetails(undefined);
         });
     }
   }, [selectedOpetion]);
