@@ -6,7 +6,7 @@ interface AutocompleteInputProps {
 }
 
 function AutocompleteInput({ setSelectedOption }: AutocompleteInputProps) {
-  const { options, setQuery, query } = useStationSearch();
+  const { options, setQuery } = useStationSearch();
   return (
     <Box sx={{ margin: '1rem 0rem' }}>
       <Autocomplete
