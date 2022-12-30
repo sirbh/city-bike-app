@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { StationOptions } from './useStationSearch';
 
-export interface IStationList {
-  station_id: number;
-  name: string;
-}
+// export interface IStationList {
+//   station_id: number;
+//   name: string;
+// }
 
 interface StationListAPIResponse {
   totalRecords: number;
-  stations: IStationList[];
+  stations: StationOptions[];
 }
 
 function useStationList() {
-  const [stationList, setStationList] = useState<IStationList[]>([]);
+  const [stationList, setStationList] = useState<StationOptions[]>([]);
   const [count, setCount] = useState<number>(0);
   const [page, setPage] = useState<number>(1);
   const [totalRecords, setTotalRecords] = useState<number>(10);

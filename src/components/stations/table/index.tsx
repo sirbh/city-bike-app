@@ -7,21 +7,21 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { TablePagination } from '@mui/material';
-import { IStationList } from '../../../hooks/useStationList';
-import AutocompleteInput from '../../autocompleteInput';
+import { StationOptions } from '../../../hooks/useStationSearch';
 
 interface ITableProps {
-  tableData: IStationList[];
+  tableData: StationOptions[];
   pageChangeHandler: (n: number) => void;
   page: number;
   count: number;
+  onRowClick: (option: StationOptions) => void;
 }
-
 export default function DenseTable({
   tableData,
   pageChangeHandler,
   page,
   count,
+  onRowClick,
 }: ITableProps) {
   return (
     <>
@@ -38,7 +38,9 @@ export default function DenseTable({
                 key={row.station_id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell align="left">{row.name}</TableCell>
+                <TableCell align="left" onClick={() => onRowClick(row)}>
+                  {row.name}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
