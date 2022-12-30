@@ -1,12 +1,23 @@
+import { Box } from '@mui/material';
 import Table from './table';
 import useJourneyDetails from '../../hooks/useJourneyDetails';
 import Tabs from './tabs';
 import useSortingTabsManager from '../../hooks/utility/useSortingTabsManager';
 import AutocompleteInput from '../autocompleteInput';
+import SelectInput from '../select';
 
 function Journey() {
-  const { journeyDetails, setOrder, setSortBy, setPage, page, count } =
-    useJourneyDetails();
+  const {
+    journeyDetails,
+    setOrder,
+    setSortBy,
+    setPage,
+    page,
+    count,
+    setSelectedOption,
+    setJourneyType,
+    journeyType,
+  } = useJourneyDetails();
   const { seletedTab, setSelectedTab, setTabsState, tabsState } =
     useSortingTabsManager(setOrder, setSortBy, setPage);
 
@@ -29,7 +40,33 @@ function Journey() {
 
   return (
     <>
-      <AutocompleteInput />
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: '2rem',
+        }}
+      >
+        <AutocompleteInput setSelectedOption={setSelectedOption} />
+        <SelectInput
+          handleChange={(v: string) => {
+            setJourneyType(v);
+          }}
+          selectedJourneyType={journeyType}
+          options={[
+            {
+              name: 'Departure',
+              value: 'dep',
+            },
+            {
+              name: 'Return',
+              value: 'ret',
+            },
+          ]}
+        />
+      </Box>
+
       <Tabs
         tabsDetails={tabsState}
         onTabClick={tabClickHandler}

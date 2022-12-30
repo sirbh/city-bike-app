@@ -1,9 +1,12 @@
 import { Autocomplete, Box, TextField } from '@mui/material';
-import useStationSearch from '../../hooks/useStationSearch';
+import useStationSearch, { StationOptions } from '../../hooks/useStationSearch';
 
-function AutocompleteInput() {
-  const { options, setQuery, query, selectedOption, setSelectedOption } =
-    useStationSearch();
+interface AutocompleteInputProps {
+  setSelectedOption: (opt: StationOptions | undefined) => void;
+}
+
+function AutocompleteInput({ setSelectedOption }: AutocompleteInputProps) {
+  const { options, setQuery, query } = useStationSearch();
   return (
     <Box sx={{ margin: '1rem 0rem' }}>
       <Autocomplete

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { StationOptions } from './useStationSearch';
 
 export interface IJourney {
   id: number;
@@ -25,13 +26,19 @@ function useJourneyDetails() {
   const [sortBy, setSortBy] = useState<string>();
   const [order, setOrder] = useState<string>();
   const [count, setCount] = useState<number>(0);
+  const [selectedOption, setSelectedOption] = useState<StationOptions>();
+  const [journeyType, setJourneyType] = useState<string>('dep');
 
   useEffect(() => {
     axios
       .get<IJourneyAPIResponse>(
         `http://localhost:8080/?page=${page}&totalRecords=${totalRecords}${
           sortBy ? `&sortBy=${sortBy}` : ''
-        }${order ? `&order=${order}` : ''}`
+        }${order ? `&order=${order}` : ''}${
+          selectedOption
+            ? `&station_id=${selectedOption.station_id}&journey_type=${journeyType}`
+            : ''
+        }`
       )
       .then((data) => {
         setJourneyDetails(data.data.journey);
@@ -41,7 +48,7 @@ function useJourneyDetails() {
         setJourneyDetails([]);
         setCount(0);
       });
-  }, [page, totalRecords, sortBy, order]);
+  }, [page, totalRecords, sortBy, order, selectedOption, journeyType]);
 
   return {
     journeyDetails,
@@ -51,6 +58,9 @@ function useJourneyDetails() {
     setOrder,
     page,
     count,
+    setJourneyType,
+    setSelectedOption,
+    journeyType,
   };
 }
 
