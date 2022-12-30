@@ -2,6 +2,7 @@ import Table from './table';
 import useJourneyDetails from '../../hooks/useJourneyDetails';
 import Tabs from './tabs';
 import useSortingTabsManager from '../../hooks/utility/useSortingTabsManager';
+import AutocompleteInput from '../autocompleteInput';
 
 function Journey() {
   const { journeyDetails, setOrder, setSortBy, setPage, page, count } =
@@ -28,6 +29,7 @@ function Journey() {
 
   return (
     <>
+      <AutocompleteInput />
       <Tabs
         tabsDetails={tabsState}
         onTabClick={tabClickHandler}
