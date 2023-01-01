@@ -18,6 +18,7 @@ export interface IStationDetails {
 function useStationDetails() {
   const [selectedOpetion, setSelectedOption] = useState<StationOptions>();
   const [stationDetails, setStationDetails] = useState<IStationDetails>();
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     if (selectedOpetion) {
@@ -26,16 +27,16 @@ function useStationDetails() {
           `http://localhost:8080/station?id=${selectedOpetion.id}&station_id=${selectedOpetion.station_id}`
         )
         .then((data) => {
-          console.log(data.data);
           setStationDetails(data.data);
+          setLoading(false);
         })
         .catch((e) => {
-          // setStationDetails(undefined);
+          setLoading(false);
         });
     }
-  }, [selectedOpetion]);
+  }, [selectedOpetion, setLoading]);
 
-  return { setSelectedOption, stationDetails };
+  return { setSelectedOption, stationDetails, loading, setLoading };
 }
 
 export default useStationDetails;

@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, LinearProgress } from '@mui/material';
 import Table from './table';
 import useJourneyDetails from '../../hooks/useJourneyDetails';
 import Tabs from './tabs';
@@ -17,6 +17,7 @@ function Journey() {
     setSelectedOption,
     setJourneyType,
     journeyType,
+    loading,
   } = useJourneyDetails();
   const { seletedTab, setSelectedTab, setTabsState, tabsState } =
     useSortingTabsManager(setOrder, setSortBy, setPage);
@@ -72,14 +73,18 @@ function Journey() {
         onTabClick={tabClickHandler}
         seletedTab={seletedTab}
       />
-      <Table
-        tableData={journeyDetails}
-        count={count}
-        page={page}
-        pageChangeHandler={(n: number) => {
-          setPage(n + 1);
-        }}
-      />
+      {!loading ? (
+        <Table
+          tableData={journeyDetails}
+          count={count}
+          page={page}
+          pageChangeHandler={(n: number) => {
+            setPage(n + 1);
+          }}
+        />
+      ) : (
+        <LinearProgress />
+      )}
     </>
   );
 }

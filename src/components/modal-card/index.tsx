@@ -1,6 +1,13 @@
 import * as React from 'react';
 import Modal from '@mui/material/Modal';
-import { Box, Card, CardContent, CardHeader, Typography } from '@mui/material';
+import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  LinearProgress,
+  Typography,
+} from '@mui/material';
 import { Place } from '@mui/icons-material';
 import { IStationDetails } from '../../hooks/useStationDetails';
 
@@ -8,9 +15,15 @@ interface IModalCardProps {
   open: boolean;
   handleClose: () => void;
   stationDetails: IStationDetails;
+  loading: boolean;
 }
 
-function ModalCard({ open, handleClose, stationDetails }: IModalCardProps) {
+function ModalCard({
+  open,
+  handleClose,
+  stationDetails,
+  loading,
+}: IModalCardProps) {
   return (
     <Modal
       open={open}
@@ -19,7 +32,7 @@ function ModalCard({ open, handleClose, stationDetails }: IModalCardProps) {
       aria-describedby="modal-modal-description"
       sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
     >
-      {stationDetails ? (
+      {!loading ? (
         <Card sx={{ minWidth: '20rem' }}>
           <CardHeader
             title={`${stationDetails.name} Station`}
@@ -62,9 +75,7 @@ function ModalCard({ open, handleClose, stationDetails }: IModalCardProps) {
           </CardContent>
         </Card>
       ) : (
-        <Card>
-          <CardHeader title="No Details About Station" />
-        </Card>
+        <LinearProgress />
       )}
     </Modal>
   );

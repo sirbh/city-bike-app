@@ -28,8 +28,10 @@ function useJourneyDetails() {
   const [count, setCount] = useState<number>(0);
   const [selectedOption, setSelectedOption] = useState<StationOptions>();
   const [journeyType, setJourneyType] = useState<string>('dep');
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get<IJourneyAPIResponse>(
         `http://localhost:8080/?page=${page}&totalRecords=${totalRecords}${
@@ -43,12 +45,22 @@ function useJourneyDetails() {
       .then((data) => {
         setJourneyDetails(data.data.journey);
         setCount(data.data.totalRecords);
+        setLoading(false);
       })
       .catch((e) => {
         setJourneyDetails([]);
         setCount(0);
+        setLoading(false);
       });
-  }, [page, totalRecords, sortBy, order, selectedOption, journeyType]);
+  }, [
+    page,
+    totalRecords,
+    sortBy,
+    order,
+    selectedOption,
+    journeyType,
+    setLoading,
+  ]);
 
   return {
     journeyDetails,
@@ -60,7 +72,9 @@ function useJourneyDetails() {
     count,
     setJourneyType,
     setSelectedOption,
+    setLoading,
     journeyType,
+    loading,
   };
 }
 

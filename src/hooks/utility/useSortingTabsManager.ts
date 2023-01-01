@@ -5,7 +5,7 @@ function useSortingTabsManager(
   setSortBy: (v: string) => void,
   setPage: (n: number) => void
 ) {
-  const [seletedTab, setSelectedTab] = useState(1);
+  const [seletedTab, setSelectedTab] = useState(0);
   const [tabsState, setTabsState] = useState([
     {
       name: 'Departure Station',
