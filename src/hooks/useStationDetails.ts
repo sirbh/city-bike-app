@@ -24,7 +24,7 @@ function useStationDetails() {
     if (selectedOpetion) {
       axios
         .get<IStationDetails>(
-          `http://localhost:8080/station?id=${selectedOpetion.id}&station_id=${selectedOpetion.station_id}`
+          `http://localhost:8080/station?station_id=${selectedOpetion.station_id}`
         )
         .then((data) => {
           setStationDetails(data.data);

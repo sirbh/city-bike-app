@@ -23,7 +23,7 @@ function useStationList() {
     setLoading(true);
     axios
       .get<StationListAPIResponse>(
-        `http://localhost:8080/station-list?page=${page}&totalRecords=${totalRecords}$`
+        `http://localhost:8080/station-list?page=${page}&totalRecords=${totalRecords}`
       )
       .then((data) => {
         setStationList(data.data.stations);

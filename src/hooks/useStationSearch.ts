@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export interface StationOptions {
-  id: string;
   station_id: string;
   name: string;
 }
