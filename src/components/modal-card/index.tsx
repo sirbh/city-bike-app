@@ -60,17 +60,21 @@ function ModalCard({
             <Typography variant="h5">
               {stationDetails.total_return ? stationDetails.total_return : 0}
             </Typography>
-            <Typography variant="body2">Average Departure Distancee</Typography>
+            <Typography variant="body2">Average Departure Distance</Typography>
             <Typography variant="h5">
               {stationDetails.avg_departure_distance
-                ? stationDetails.avg_departure_distance
-                : 0}
+                ? `${(stationDetails.avg_departure_distance / 1000)
+                    .toFixed(2)
+                    .toString()}km`
+                : '0km'}
             </Typography>
             <Typography variant="body2">Average Return Distance</Typography>
             <Typography variant="h5">
               {stationDetails.avg_return_distance
-                ? stationDetails.avg_return_distance
-                : 0}
+                ? `${(stationDetails.avg_return_distance / 1000)
+                    .toFixed(2)
+                    .toString()}km`
+                : '0km'}
             </Typography>
           </CardContent>
         </Card>
