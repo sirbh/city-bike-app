@@ -5,7 +5,7 @@ import {
   Card,
   CardContent,
   CardHeader,
-  LinearProgress,
+  CircularProgress,
   Typography,
 } from '@mui/material';
 import { Place } from '@mui/icons-material';
@@ -75,7 +75,17 @@ function ModalCard({
           </CardContent>
         </Card>
       ) : (
-        <LinearProgress />
+        <Card
+          sx={{
+            minWidth: '10rem',
+            minHeight: '10rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <CircularProgress />
+        </Card>
       )}
     </Modal>
   );
