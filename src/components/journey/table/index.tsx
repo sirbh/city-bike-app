@@ -30,8 +30,8 @@ export default function DenseTable({
             <TableRow>
               <TableCell align="left">Departure station</TableCell>
               <TableCell align="left">Returhn Station</TableCell>
-              <TableCell align="right">Covered Distance&nbsp;(mins)</TableCell>
-              <TableCell align="right">Duration&nbsp;(km)</TableCell>
+              <TableCell align="right">Covered Distance&nbsp;(km)</TableCell>
+              <TableCell align="right">Duration&nbsp;(mins)</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -42,8 +42,12 @@ export default function DenseTable({
               >
                 <TableCell align="left">{row.departure_station_name}</TableCell>
                 <TableCell align="left">{row.return_station_name}</TableCell>
-                <TableCell align="right">{row.covered_distance}</TableCell>
-                <TableCell align="right">{row.duration}</TableCell>
+                <TableCell align="right">
+                  {(row.covered_distance / 1000).toFixed(2)}
+                </TableCell>
+                <TableCell align="right">
+                  {(row.duration / 60).toFixed()}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
