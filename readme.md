@@ -44,6 +44,8 @@ Axios
 
 ## How to run?
 
+BEFORE RUNNING FRONTEND MAKE SURE BACKEND IS RUNNING - https://github.com/sirbh/city-bike-backend
+
 1. clone the repo using ``` git clone https://github.com/sirbh/city-bike-app.git```.
 2. In the project directory run ```npm i```
 3. Then run ```npm run dev```
