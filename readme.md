@@ -1,6 +1,6 @@
 # CITY BIKE APP FRONTEND
 ## About
-This repository contains code for the front end for CITY BIKE app. With this we can view information about bike station and journey details in Espoo region. Moreover on staion route we can also view more detailes about a station by clicking or searching the station name.
+This repository contains code for the front end for CITY BIKE app. With this we can view information about bike station and journey details in Espoo region. Moreover, on station route we can also view more detailes about a station by clicking or searching the station name.
 
 ## Features 
 
