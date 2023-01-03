@@ -38,7 +38,15 @@ export default function DenseTable({
                 key={row.station_id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell align="left" onClick={() => onRowClick(row)}>
+                <TableCell
+                  align="left"
+                  onClick={() => onRowClick(row)}
+                  sx={{
+                    cursor: 'pointer',
+                    color: 'blue',
+                    textDecoration: 'undeline',
+                  }}
+                >
                   {row.name}
                 </TableCell>
               </TableRow>
