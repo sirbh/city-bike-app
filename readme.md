@@ -6,12 +6,16 @@ This repository contains code for the front end for CITY BIKE app. With this we 
 
 ### Journey View
 
+![View of stations list](images/journey-view.jpg)<br>
+
 - List of journeys with departure stations, return stations, covered distance in kilometers and duration in minutes is shown.
 - Pagination
 - Ordering per column
 - Searching
 
 ### Station View
+
+![View of stations list](images/station-view.jpg)<br>
 - List of all the stations.
 - Pagination
 - Searching
@@ -19,6 +23,8 @@ This repository contains code for the front end for CITY BIKE app. With this we 
 - Top 5 most popular departure stations for journeys ending at the station
 
 ### Single station view (by clicking on station name on station page)
+
+![View of stations list](images/single-station-view.jpg)<br>
 - Station name
 - Station address
 - Total number of journeys starting from the station
@@ -38,9 +44,9 @@ This repository contains code for the front end for CITY BIKE app. With this we 
 
 ## Tech
 
-ReactJS
-MaterialUI
-Axios
+> ReactJS
+> MaterialUI
+> Axios
 
 ## How to run?
 
