@@ -19,8 +19,8 @@ This repository contains code for the front end for CITY BIKE app. With this we 
 - List of all the stations.
 - Pagination
 - Searching
--  Top 5 most popular return stations for journeys starting from the station
-- Top 5 most popular departure stations for journeys ending at the station
+-  Top 5 most popular return stations
+- Top 5 most popular departure stations
 
 ### Single station view (by clicking on station name on station page)
 
