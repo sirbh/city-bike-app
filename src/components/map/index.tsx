@@ -12,7 +12,7 @@ function Mapview({ lat, log, markerLabel }: MapviewProps) {
       center={[lat, log]}
       zoom={13}
       scrollWheelZoom={false}
-      style={{ width: '100%', height: '210px' }}
+      style={{ width: '100%', height: '210px', marginBottom: '1.25rem' }}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
