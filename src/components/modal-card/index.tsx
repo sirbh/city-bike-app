@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import { Place } from '@mui/icons-material';
 import { IStationDetails } from '../../hooks/useStationDetails';
+import Mapview from '../map';
 
 interface IModalCardProps {
   open: boolean;
@@ -50,6 +51,11 @@ function ModalCard({
             }
           />
           <CardContent>
+            <Mapview
+              lat={stationDetails.y}
+              log={stationDetails.x}
+              markerLabel={stationDetails.name}
+            />
             <Typography variant="body2">Total Departures</Typography>
             <Typography variant="h5">
               {stationDetails.total_departures
