@@ -11,14 +11,14 @@ This repository contains code for the front end for CITY BIKE app. With this we 
 - List of journeys with departure stations, return stations, covered distance in kilometers and duration in minutes is shown.
 - Pagination
 - Ordering per column
-- Searching
+- Searching with Autocomplete
 
 ### Station View
 
 ![View of stations list](images/station-view.jpg)<br>
 - List of all the stations.
 - Pagination
-- Searching
+- Searching Autocomplete
 -  Top 5 most popular return stations
 - Top 5 most popular departure stations
 
