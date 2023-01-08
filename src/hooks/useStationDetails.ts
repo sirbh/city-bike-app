@@ -13,18 +13,23 @@ export interface IStationDetails {
   total_return: number;
   avg_departure_distance: number;
   avg_return_distance: number;
+  popular_departure_station: StationOptions[];
+  popular_return_station: StationOptions[];
 }
 
 function useStationDetails() {
-  const [selectedOpetion, setSelectedOption] = useState<StationOptions>();
+  const [selectedOption, setSelectedOption] = useState<
+    StationOptions | undefined
+  >(undefined);
   const [stationDetails, setStationDetails] = useState<IStationDetails>();
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (selectedOpetion) {
+    setLoading(true);
+    if (selectedOption) {
       axios
         .get<IStationDetails>(
-          `http://localhost:8080/station?station_id=${selectedOpetion.station_id}`
+          `http://localhost:8080/station?station_id=${selectedOption.station_id}`
         )
         .then((data) => {
           setStationDetails(data.data);
@@ -32,9 +37,10 @@ function useStationDetails() {
         })
         .catch((e) => {
           setLoading(false);
+          setStationDetails(undefined);
         });
     }
-  }, [selectedOpetion, setLoading]);
+  }, [selectedOption, setLoading]);
 
   return { setSelectedOption, stationDetails, loading, setLoading };
 }

@@ -88,8 +88,8 @@ function Stations() {
               tableData={stationList}
               onRowClick={(option) => {
                 setLoading(true);
-                setSelectedOption(option);
                 setIsModalOpen(true);
+                setSelectedOption(option);
               }}
             />
           )}
