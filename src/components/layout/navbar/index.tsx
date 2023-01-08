@@ -14,38 +14,19 @@ function Navbar() {
     <AppBar position="static" sx={{ width: '100%' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <PedalBike sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Link to="./" style={{ textDecoration: 'none' }}>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'white',
-                textDecoration: 'none',
-              }}
-            >
-              CityBike
-            </Typography>
-          </Link>
+          <PedalBike sx={{ display: { md: 'flex' }, mr: 1 }} />
+
           <Typography
-            variant="h5"
+            variant="h6"
             noWrap
             component="a"
-            href=""
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
+              display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: 'white',
               textDecoration: 'none',
             }}
           >
@@ -54,7 +35,7 @@ function Navbar() {
           <Box
             sx={{
               flexGrow: 1,
-              display: { xs: 'none', md: 'flex' },
+              display: { md: 'flex' },
               justifyContent: 'end',
             }}
           >
@@ -65,7 +46,6 @@ function Navbar() {
                 style={{ textDecoration: 'none' }}
               >
                 <Button
-                  // onClick={handleCloseNavMenu}
                   sx={{
                     my: 2,
                     color: 'white',
