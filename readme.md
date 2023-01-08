@@ -6,7 +6,7 @@ This repository contains code for the front end for CITY BIKE app. With this we 
 
 ### Journey View
 
-![View of stations list](images/journey-view.jpg)<br>
+![View of journey list](images/journey-view.jpg)<br>
 
 - List of journeys with departure stations, return stations, covered distance in kilometers and duration in minutes is shown.
 - Pagination
@@ -24,13 +24,14 @@ This repository contains code for the front end for CITY BIKE app. With this we 
 
 ### Single station view (by clicking on station name on station page)
 
-![View of stations list](images/single-station-view-with-map.jpg)<br>
+![View of single station](images/single-station-view-with-map.jpg)<br>
 - Station name
 - Station address
 - Total number of journeys starting from the station
 - Total number of journeys ending at the station
 - The average distance of a journey starting from the station
 - The average distance of a journey ending at the station
+- Station location on map
 
 
 
