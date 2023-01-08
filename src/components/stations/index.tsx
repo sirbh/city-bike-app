@@ -15,9 +15,12 @@ function Stations() {
     setPage,
     loading: listLoading,
   } = useStationList();
+
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
   const { setSelectedOption, stationDetails, loading, setLoading } =
     useStationDetails();
+
   const {
     popularStationList,
     setJourneyType,
@@ -31,6 +34,7 @@ function Stations() {
         <ModalCard
           handleClose={() => {
             setIsModalOpen(false);
+            setSelectedOption(undefined);
           }}
           open={isModalOpen}
           stationDetails={stationDetails}
