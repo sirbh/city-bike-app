@@ -19,7 +19,7 @@ function Mapview({ lat, log, markerLabel }: MapviewProps) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker position={[lat, log]}>
-        <Popup>{markerLabel}</Popup>
+        <Popup>{`${markerLabel} Station`}</Popup>
       </Marker>
     </MapContainer>
   );
