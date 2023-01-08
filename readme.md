@@ -24,7 +24,7 @@ This repository contains code for the front end for CITY BIKE app. With this we 
 
 ### Single station view (by clicking on station name on station page)
 
-![View of stations list](images/single-station-view.jpg)<br>
+![View of stations list](images/single-station-view-with-map.jpg)<br>
 - Station name
 - Station address
 - Total number of journeys starting from the station
