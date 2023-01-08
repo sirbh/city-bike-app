@@ -24,7 +24,7 @@ This repository contains code for the front end for CITY BIKE app. With this we 
 
 ### Single station view (by clicking on station name on station page)
 
-![View of single station](images/single-station-view-with-map.jpg)<br>
+![View of single station](images/single-station-view.jpg)<br>
 - Station name
 - Station address
 - Total number of journeys starting from the station
@@ -32,6 +32,7 @@ This repository contains code for the front end for CITY BIKE app. With this we 
 - The average distance of a journey starting from the station
 - The average distance of a journey ending at the station
 - Station location on map
+- Top 5 popular return and departure station
 
 
 
